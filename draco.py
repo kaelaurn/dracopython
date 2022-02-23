@@ -9,7 +9,7 @@ try:
         porcentagem = dracov * 1.7 / 100
         resultado = dracov - porcentagem
         print("Sem taxa:",dracov)
-        print("Com taxa:",resultado)
+        print("Com taxa:%.2f" %resultado)
     elif draco== "darksteel":
      print('Calculando valor do Draco para Darksteel')   
      draco = float(input('Entre quantos Dracos: ')) 
