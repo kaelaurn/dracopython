@@ -11,12 +11,12 @@ try:
         print("Sem taxa:",dracov)
         print("Com taxa:%.2f" %resultado)
     elif draco== "darksteel":
-     print('Calculando valor do Draco para Darksteel')   
-     draco = float(input('Entre quantos Dracos: ')) 
-     darksteel = 104.921 * draco 
-     perdeu= (draco * 105.921) - darksteel
-     print("Darksteel:",darksteel)
-     print("Perdeu:",perdeu) 
+        print('Calculando valor do Draco para Darksteel')   
+        draco = float(input('Entre quantos Dracos: ')) 
+        darksteel = 104.921 * draco 
+        perdeu= (draco * 105.921) - darksteel
+        print("Darksteel:",darksteel)
+        print("Perdeu:",perdeu) 
     else:
         print("Digite draco ou darksteel")
 except ValueError:
