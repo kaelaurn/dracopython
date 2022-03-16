@@ -22,7 +22,6 @@ def real():
     prince=result.get('USDBRL')
     global realdoleta
     realdoleta = float(prince.get('high'))
-    print(realdoleta)
     
 
 def binance():
@@ -43,5 +42,7 @@ resultado = dracos * ( realdraco * realdoleta )
 taxinha = resultado - realklay - realwemix
 print('%.2f' %resultado)
 print('taxa:%.2f' %taxinha )
+
+input('pressione ENTER para sair..')
 
 
