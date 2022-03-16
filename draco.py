@@ -1,24 +1,47 @@
-# draco
-try:
-    draco = (input('Deseja calcular o Draco ou Darksteel?')).lower()
-    if draco== "draco":
-        draco = float(input('Entre valor Draco: '))
-        dracon = float(input('Quantos dracos possui: '))
-        dolar = float(input('Valor Dolar: '))
-        dracov = dracon * (dolar * draco)
-        porcentagem = dracov * 1.7 / 100
-        resultado = dracov - porcentagem
-        print("Sem taxa:",dracov)
-        print("Com taxa:%.2f" %resultado)
-    elif draco== "darksteel":
-        print('Calculando valor do Draco para Darksteel')   
-        draco = float(input('Entre quantos Dracos: ')) 
-        darksteel = 104.921 * draco 
-        perdeu= (draco * 105.921) - darksteel
-        print("Darksteel:",darksteel)
-        print("Perdeu:",perdeu) 
-    else:
-        print("Digite draco ou darksteel")
-except ValueError:
-    print('Valor Inválido')
-input('Pressione ENTER para sair...')
+from unittest import result
+import requests
+
+def draco():
+    r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest")
+    result = r.json()
+    global realdraco
+    prince=result.get('Data')
+    realdraco=float(prince.get('USDDracoRate'))
+
+def wemix():
+    r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest")
+    result = r.json()
+    global realwemix
+    prince=result.get('Data')
+    realwemix=float(prince.get('DracoPriceWemix'))
+
+
+def real():
+    r= requests.get('https://economia.awesomeapi.com.br/last/USD-BRL')
+    result = r.json()
+    prince=result.get('USDBRL')
+    global realdoleta
+    realdoleta = float(prince.get('high'))
+    print(realdoleta)
+    
+
+def binance():
+    r = requests.get("https://api.binance.com/api/v3/ticker/price?",
+                 params=dict(symbol="KLAYUSDT"))
+    results = r.json()
+    global realklay
+    realklay=float(results.get('price'))
+
+draco()
+wemix()
+binance()
+real()
+    
+dracos = float(input('Digite quantos dracos possui: '))
+
+resultado = dracos * ( realdraco * realdoleta )
+taxinha = resultado - realklay - realwemix
+print('%.2f' %resultado)
+print('taxa:%.2f' %taxinha )
+
+
