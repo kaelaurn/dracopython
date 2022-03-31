@@ -1,5 +1,5 @@
-from unittest import result
 import requests
+
 
 def draco():
     r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest")
@@ -7,6 +7,7 @@ def draco():
     global realdraco
     prince=result.get('Data')
     realdraco=float(prince.get('USDDracoRate'))
+    print('valor do draco: %.2f' %realdraco )
 
 def wemix():
     r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest")
@@ -14,6 +15,7 @@ def wemix():
     global realwemix
     prince=result.get('Data')
     realwemix=float(prince.get('DracoPriceWemix'))
+    print('valor do wemix %.2f' %realwemix)
 
 
 def real():
@@ -22,6 +24,7 @@ def real():
     prince=result.get('USDBRL')
     global realdoleta
     realdoleta = float(prince.get('high'))
+    print('valor do real %.2f' %realdoleta)
     
 
 def binance():
@@ -30,12 +33,14 @@ def binance():
     results = r.json()
     global realklay
     realklay=float(results.get('price'))
+    print('valor da binance klay %.2f' %realklay)
 
 draco()
 wemix()
 binance()
 real()
-    
+
+  
 dracos = float(input('Digite quantos dracos possui: '))
 
 resultado = dracos * ( realdraco * realdoleta )
@@ -44,5 +49,3 @@ print('%.2f' %resultado)
 print('taxa:%.2f' %taxinha )
 
 input('pressione ENTER para sair..')
-
-
