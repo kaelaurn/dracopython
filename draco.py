@@ -7,23 +7,23 @@ import requests
 def draco():
     r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest").json()
     global realdraco
-    prince=r.get('Data')
-    realdraco=float(prince.get('USDDracoRate'))
+    price=r.get('Data')
+    realdraco=float(price.get('USDDracoRate'))
     print('valor do draco: %.2f' %realdraco )
 
 def wemix():
     r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest").json()
     global realwemix
-    prince=r.get('Data')
-    realwemix=float(prince.get('DracoPriceWemix'))
+    price=r.get('Data')
+    realwemix=float(price.get('DracoPriceWemix'))
     print('valor do wemix %.2f' %realwemix)
 
 
 def real():
     r= requests.get('https://economia.awesomeapi.com.br/last/USD-BRL').json()
-    prince=r.get('USD')
+    price=r.get('USD')
     global realdoleta
-    realdoleta=float(prince.get('high'))
+    realdoleta=float(price.get('high'))
     print('valor do real %.2f' %realdoleta)
 
    
