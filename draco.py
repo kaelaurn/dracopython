@@ -1,3 +1,4 @@
+from prompt_toolkit import print_formatted_text
 import requests
 
 
@@ -47,13 +48,15 @@ binance()
 
 
 
-  
-dracos = float(input('Digite quantos dracos possui: '))
+def resultados():
+    dracos = float(input('Digite quantos dracos possui: '))
 
-resultado = dracos * ( realdraco * realdoleta )
-taxinha = resultado - realklay - realwemix
-print('Sem taxa: %.2f' %resultado)
-print('Taxa: %.2f' %taxinha )
+    resultado = dracos * ( realdraco * realdoleta )
+    taxinha = resultado - realklay - realwemix
+    return ('Sem taxa: %.2f' %resultado) + ('\nCom taxa: %.2f' %taxinha)
+
+print(resultados())
+
 
 input('pressione ENTER para sair..')
 
