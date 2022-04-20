@@ -1,9 +1,6 @@
 import requests
 
 
-
-
-
 def draco():
     r = requests.post("https://api.mir4global.com/wallet/prices/draco/lastest").json()
     global realdraco
@@ -21,7 +18,9 @@ def wemix():
 
 def real():
     r= requests.get('https://economia.awesomeapi.com.br/last/USD-BRL').json()
-    price=r.get('USD')
+    #get the first value of a tuple
+    naoadiantamudar= list(r)[0]
+    price=r.get(naoadiantamudar)
     global realdoleta
     realdoleta=float(price.get('high'))
     print('valor do real %.2f' %realdoleta)
@@ -30,7 +29,7 @@ def real():
 
 def binance():
     r = requests.get("https://api.binance.com/api/v3/ticker/price?",
-                 params=dict(symbol="KLAYUSDT")).json()
+                        params=dict(symbol="KLAYUSDT")).json()
     global realklay
     realklay=float(r.get('price'))
     print('valor da binance klay %.2f' %realklay)
@@ -48,13 +47,15 @@ binance()
 
 
 
-  
-dracos = float(input('Digite quantos dracos possui: '))
+def resultados():
+    dracos = float(input('Digite quantos dracos possui: '))
 
-resultado = dracos * ( realdraco * realdoleta )
-taxinha = resultado - realklay - realwemix
-print('Sem taxa: %.2f' %resultado)
-print('Taxa: %.2f' %taxinha )
+    resultado = dracos * ( realdraco * realdoleta )
+    taxinha = resultado - realklay - realwemix
+    return ('Sem taxa: %.2f' %resultado) + ('\nCom taxa: %.2f' %taxinha)
+
+print(resultados())
+
 
 input('pressione ENTER para sair..')
 
